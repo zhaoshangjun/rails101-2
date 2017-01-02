@@ -9,6 +9,18 @@ class GroupsController < ApplicationController
     @group =Group.new
   end
 
+  def create
+    @group = Group.create(group_paramas)
+    @group.save
+
+    redirect_to groups_path
+
+  end
+  private
+
+  def group_paramas
+    params.require(:group).permit(:title, :description)
+  end
 
 
 
